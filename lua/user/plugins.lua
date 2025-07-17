@@ -67,12 +67,28 @@ lvim.plugins = {
         config = function()
             require("llm").setup({
                 -- [[ Deepseek ]]
-                url = "https://api.deepseek.com/chat/completions",
-                model = "deepseek-chat",
-                api_type = "openai",
-                max_tokens = 4096,
-                temperature = 0.3,
-                top_p = 0.7,
+                -- url = "https://api.deepseek.com/chat/completions",
+                -- model = "deepseek-chat",
+                -- api_type = "openai",
+                -- max_tokens = 8192,
+                -- temperature = 0.3,
+                -- top_p = 0.7,
+        --
+                -- 百炼 OpenAI 兼容模式配置
+                url = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",  -- OpenAI 兼容端点
+                model = "qwen3-8b",  -- 百炼模型名称
+                api_type = "openai",      -- 使用 OpenAI 类型
+                -- 从环境变量获取 API Key
+                fetch_key = function()
+                    return os.getenv("DASHSCOPE_API_KEY")  -- 确保设置了该环境变量
+                end,
+                -- 请求头配置（与 OpenAI 一致）
+                headers = {
+                    ["Content-Type"] = "application/json",
+                    ["Authorization"] = "Bearer $API_KEY",  -- OpenAI 格式的认证
+                },
+
+                -- UI 和 快捷键
 
                 prompt = "You are a helpful programming assistant.",
 
@@ -133,6 +149,22 @@ lvim.plugins = {
                 --     backend = require("llm.common.completion.backends.llm"),
                 --     },
                 -- },
+                -- dashscope
+                -- app_handler = {
+                --   Completion = {
+                --       handler = require("llm.tools").completion_handler,
+                --       opts = {
+                --           url = "https://dashscope.aliyuncs.com/api/v1/services/aigc/code-generation/generation",  -- 代码生成端点
+                --           model = "qwen3-8b-code",  -- 百炼代码模型
+                --           api_type = "dashscope",
+                --           fetch_key = function() return os.getenv("BAILIAND_KEY") end,
+                --           context_window = 4096,
+                --           n_completions = 1,
+                --       },
+                --       frontend = require("llm.common.completion.frontends.popup"),
+                --       backend = require("llm.common.completion.backends.llm"),
+                --   },
+                -- }
             })
         end,
         keys = {
