@@ -19,7 +19,7 @@ lvim.plugins = {
       -- vim.g.mkdp_auto_start = 1
       vim.cmd [[
         let g:mkdp_open_to_the_world = 1
-        let g:mkdp_open_ip = '124.89.81.254'
+        let g:mkdp_open_ip = '127.0.0.1'
         let g:mkdp_port = 3999
         " let g:mkdp_browser = 'firefox'
         let g:mkdp_browser = '/mnt/c/Program\\ Files/Google/Chrome/Application/chrome.exe'

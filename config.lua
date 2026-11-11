@@ -6,7 +6,7 @@
 --
 
 -- 模糊查找插件
--- reload "user.telescope"
+reload "user.telescope"
 -- 快捷键
 reload "user.keymaps"
 -- 语法高亮、代码解析

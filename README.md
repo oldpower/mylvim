@@ -13,7 +13,7 @@ export PATH="/opt/nvim-linux64/bin:$PATH"
 sudo apt update
 sudo apt install -y build-essential nodejs npm cargo ripgrep 
 sudo apt install -y codespell fd-find
-
+sudo apt install shellcheck
 
 # 当前使用
 node -v
